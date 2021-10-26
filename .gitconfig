@@ -1,0 +1,10 @@
+[user]
+	email = henrik.logj@gmail.com
+	name = Henrik Gjestang
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[gui]
+	recentrepo = C:/Users/henrik.gjestang/dev/grieg-seafood
