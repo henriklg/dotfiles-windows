@@ -30,9 +30,9 @@ Short description of what actions are executed (or should be, when finished) whe
 - Run `Set-ExecutionPolicy AllSigned`
 - Install [Git](https://git-scm.com/download/win) - Optional: [GitHub Desktop](https://desktop.github.com/)
 - Install PowerShell 7.2 ([MS Store](https://www.microsoft.com/en-us/p/powershell/9mz1snwt0n5d?activetab=pivot:overviewtab))
-- Install [Chocolatey](https://chocolatey.org/install)
-- Install [Pyenv](https://github.com/pyenv-win/pyenv-win) (`choco install pyenv-win`, and disable app aliases)
-- Install [Poetry](https://python-poetry.org/docs/#windows-powershell-install-instructions)
+- Install [Chocolatey](https://chocolatey.org/install) (NB: Admin)
+- Install [Pyenv](https://github.com/pyenv-win/pyenv-win) (`choco install pyenv-win`, and disable app aliases, NB: Admin)
+- Install [Poetry](https://python-poetry.org/docs/#windows-powershell-install-instructions) (`poetry config virtualenvs.in-project true`)
 - (Optional) Install [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab)
 - (Optional) Install [Oh-My-Posh](https://ohmyposh.dev/docs/pwsh) and [MesloLGS NF](https://github.com/henriklg/dotfiles-windows/tree/main/fonts) fonts
 
@@ -44,4 +44,4 @@ Short description of what actions are executed (or should be, when finished) whe
   - [ ] Copy pwsh profile to directory
 - [ ] Set up install script
   - [ ] chocolatey, MS terminal, Pyenv, poetry, git, fonts, pwsh, oh-my-posh
-- [x] Add dotfiles, configs, themes and fonts
+- [x] ~~Add dotfiles, configs, themes and fonts~~
