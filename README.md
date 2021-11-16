@@ -34,7 +34,7 @@ Short description of what actions are executed (or should be, when finished) whe
 - Install [Pyenv](https://github.com/pyenv-win/pyenv-win) (`choco install pyenv-win`, and disable app aliases)
 - Install [Poetry](https://python-poetry.org/docs/#windows-powershell-install-instructions)
 - (Optional) Install [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab)
-- (Optional) Install [Oh-My-Posh](https://ohmyposh.dev/docs/pwsh) and [MesloLGS NF](main/fonts) fonts
+- (Optional) Install [Oh-My-Posh](https://ohmyposh.dev/docs/pwsh) and [MesloLGS NF](https://github.com/henriklg/dotfiles-windows/tree/main/fonts) fonts
 
 
 ### TODO
