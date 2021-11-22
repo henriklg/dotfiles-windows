@@ -213,6 +213,8 @@
           "background": "#d3d7cf",
           "trailing_diamond": "─╯",
           "properties": {
+            "prefix": "",
+            "postfix": "",
             "text": ""
           }
         }
