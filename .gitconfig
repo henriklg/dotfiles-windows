@@ -8,3 +8,5 @@
 	process = git-lfs filter-process
 [gui]
 	recentrepo = C:/Users/henrik.gjestang/dev/grieg-seafood
+[init]
+	defaultBranch = main
