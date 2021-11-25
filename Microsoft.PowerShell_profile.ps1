@@ -5,6 +5,8 @@ Import-Module oh-my-posh
 Set-PoshPrompt -Theme ~\dev\dotfiles-windows\pk10_custom_theme.omp.json
 # Remove prompt in history
 Enable-PoshTransientPrompt
+# Remove virtual env prompt from terminal
+$env:VIRTUAL_ENV_DISABLE_PROMPT = 1
 
 
 #############
