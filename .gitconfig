@@ -10,3 +10,5 @@
 	recentrepo = C:/Users/henrik.gjestang/dev/grieg-seafood
 [init]
 	defaultBranch = main
+[core]
+	editor = \"C:\\Users\\henrik.gjestang\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\code\" --wait
