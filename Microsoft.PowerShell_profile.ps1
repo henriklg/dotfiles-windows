@@ -1,7 +1,8 @@
 ##############
 # Oh-My-Posh #
 ##############
-Import-Module oh-my-posh
+# Old: Import-Module oh-my-posh
+oh-my-posh init pwsh | Invoke-Expression
 Set-PoshPrompt -Theme ~\dev\dotfiles-windows\pk10_custom_theme.omp.json
 # Remove prompt in history
 Enable-PoshTransientPrompt

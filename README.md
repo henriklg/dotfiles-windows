@@ -29,27 +29,31 @@ TODO
 Short description of what actions are executed (or should be, when finished) when running install.ps1:
 
 Optional (but highly recommended):
-- Install [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab)
-- Install [Oh-My-Posh](https://ohmyposh.dev/docs/pwsh) (`Install-Module oh-my-posh`) and [MesloLGS NF](https://github.com/henriklg/dotfiles-windows/tree/main/fonts) fonts (found in repo)
-- Install VS code and sign in with GitHub account for automatically setup of config files
+- Install [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab): `winget install Microsoft.WindowsTerminal`
+- Install [Oh-My-Posh](https://github.com/jandedobbeleer/oh-my-posh): `winget install JanDeDobbeleer.OhMyPosh -s winget` and [MesloLGS NF](https://github.com/henriklg/dotfiles-windows/tree/main/fonts) fonts.
+- Install VS code (`winget install Microsoft.VisualStudioCode`) and sign in with GitHub account for automatically setup of config files
+- Install gsudo: `winget install gerardog.gsudo`
+- `Set-ExecutionPolicy Bypass -Scope Process -Force` Maybe?
 
 
 <details close>
 <summary>
-Install PowerShell 7.2
+Install PowerShell 7
 </summary>
 
-- Recommended: [From Microsoft Store](https://www.microsoft.com/en-us/p/powershell/9mz1snwt0n5d?activetab=pivot:overviewtab)
+- pwsh: `winget install PowerShell`
 - [Microsoft docs](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2)
 - [github.com/PowerShell](https://github.com/PowerShell/PowerShell/releases)
 </details>
+
 
 <details close>
 <summary>
 Install Git
 </summary>
 
-- Recommended: [Git](https://git-scm.com/download/win)
+- pwsh: `winget install --id Git.Git -e --source winget`
+- Site: [Git](https://git-scm.com/download/win)
 - Optional: [GitHub Desktop](https://desktop.github.com/)
 - NB: remember to set `.gitconfig`
 </details>
@@ -57,25 +61,15 @@ Install Git
 
 <details close>
 <summary>
-Install Chocolatey
-</summary>
-
-- [Chocolatey website](https://chocolatey.org/install)
-- Open shell with admin rights and run:
-```ps
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-```
-- Wait a few seconds and check install with `choco --version`
-- Optional: `choco install gsudo`
-</details>
-
-<details close>
-<summary>
 Install Pyenv
 </summary>
 
+- pwsh:
+```ps
+Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1"
+```
+- Chocolatey - In admin pwsh run: `choco install pyenv-win`
 - [Pyenv repo](https://github.com/pyenv-win/pyenv-win)
-- In admin pwsh run: `choco install pyenv-win`
 - Disable windows app aliases
 - Install Python 3.9.0: `pyenv install 3.9.0`
 </details>
@@ -101,7 +95,6 @@ Install Poetry
 ## Other useful notes
 
 - Oh-My-Posh will be added if the powershell.config file is transfered.
-- Remember to update oh-my-posh acasionally
 - Need to set font to MesloLGS in powershell and vscode etc
 
 
