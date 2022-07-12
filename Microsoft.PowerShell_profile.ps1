@@ -1,13 +1,28 @@
-##############
-# Oh-My-Posh #
-##############
-# Old: Import-Module oh-my-posh
-oh-my-posh init pwsh | Invoke-Expression
-Set-PoshPrompt -Theme ~\dev\dotfiles-windows\pk10_custom_theme.omp.json
-# Remove prompt in history
-Enable-PoshTransientPrompt
-# Remove virtual env prompt from terminal
-$env:VIRTUAL_ENV_DISABLE_PROMPT = 1
+###########
+# Modules #
+###########
+try {
+  Import-Module oh-my-posh
+  # oh-my-posh init pwsh | Invoke-Expression
+  Set-PoshPrompt -Theme ~\dev\dotfiles-windows\pk10_custom_theme.omp.json
+  Enable-PoshTransientPrompt
+  # $env:VIRTUAL_ENV_DISABLE_PROMPT = 1
+}
+catch {
+  Write-Host "Oh-my-posh not installed"
+  Write-Host $_
+}
+
+try {
+  $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+  Import-Module "$ChocolateyProfile"
+}
+catch {
+  Write-Host "Chocolatey not installed"
+  Write-Host $_
+}
+
+
 
 
 #############
@@ -96,4 +111,44 @@ for($i = 1; $i -le 5; $i++){
   $d =  $u.Replace("u","../")
   Invoke-Expression "function $u { push-location $d }"
   Invoke-Expression "function $unum { push-location $d }"
+}
+
+
+function Load-Module {
+  <#
+  .SYNOPSIS
+  .DESCRIPTION
+  Import a module with try/catch and return true if successful and false if not.
+  .EXAMPLE
+  try {
+    if (Load-Module "oh-my-posh") {
+      # do nothing
+    }
+    else {
+        Write-Host "Failed to load $moduleName"
+    }
+  }
+  catch {
+      Write-Host "Exception caught: $_"
+  }
+  #>
+  param (
+      [parameter(Mandatory = $true)][string] $name
+  )
+
+  $retVal = $true
+
+  if (!(Get-Module -ListAvailable -Name $name)) {
+      $retVal = Get-Module -ListAvailable | where { $_.Name -eq $name }
+
+      if ($retVal) {
+          try {
+              Import-Module $name -ErrorAction SilentlyContinue
+          }
+          catch {
+              $retVal = $false
+          }
+      }
+  }
+  return $retVal
 }
