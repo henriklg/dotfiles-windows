@@ -68,7 +68,6 @@ Install Pyenv
 ```ps
 Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1"
 ```
-- Chocolatey - In admin pwsh run: `choco install pyenv-win`
 - [Pyenv repo](https://github.com/pyenv-win/pyenv-win)
 - Disable windows app aliases
 - Install Python 3.9.0: `pyenv install 3.9.0`
@@ -81,12 +80,13 @@ Install Poetry
 </summary>
 
 - [Poetry website](https://python-poetry.org/docs/#windows-powershell-install-instructions)
+- [Poetry GitHub](https://github.com/python-poetry/poetry)
 - Run the following in PowerShell (admin not needed):
 ```ps
-(Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python -
+(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
 ```
 - Run: `poetry config virtualenvs.in-project true` to store environments files in project folder
-- NB: might have to add to `%USERPROFILE%\AppData\Roaming\Python\Scripts` to ´Path´ in user variables
+- Update (NB: Admin required): `poetry self update` (add '--preview' for latest preview)
 </details>
 
 
