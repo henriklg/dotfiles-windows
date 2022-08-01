@@ -2,13 +2,12 @@
 # Modules #
 ###########
 try {
-  Import-Module oh-my-posh
   # oh-my-posh init pwsh | Invoke-Expression
-  Set-PoshPrompt -Theme ~\dev\dotfiles-windows\pk10_custom_theme.omp.json
+  oh-my-posh init pwsh --config ~\dev\dotfiles-windows\pk10_custom_theme.omp.json | Invoke-Expression
   Enable-PoshTransientPrompt
-  # $env:VIRTUAL_ENV_DISABLE_PROMPT = 1
 }
 catch {
+  # winget install JanDeDobbeleer.OhMyPosh -s winget
   Write-Host "Oh-my-posh not installed"
   Write-Host $_
 }
@@ -22,7 +21,7 @@ catch {
   Write-Host $_
 }
 
-
+Write-Host "Hi! 🌞🚀"
 
 
 #############
