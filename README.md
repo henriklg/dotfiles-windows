@@ -30,7 +30,7 @@ Short description of what actions are executed (or should be, when finished) whe
 
 Optional (but highly recommended):
 - Install [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab): `winget install Microsoft.WindowsTerminal`
-- Install [Oh-My-Posh](https://github.com/jandedobbeleer/oh-my-posh): `winget install JanDeDobbeleer.OhMyPosh -s winget` and [MesloLGS NF](https://github.com/henriklg/dotfiles-windows/tree/main/fonts) fonts.
+- Install [Oh-My-Posh](https://github.com/jandedobbeleer/oh-my-posh): `winget install JanDeDobbeleer.OhMyPosh -s winget` and [MesloLGS NF](https://github.com/henriklg/dotfiles-windows/tree/main/fonts) fonts (`oh-my-posh font install` as admin).
 - Install VS code (`winget install Microsoft.VisualStudioCode`) and sign in with GitHub account for automatically setup of config files
 - Install gsudo: `winget install gerardog.gsudo`
 - `Set-ExecutionPolicy Bypass -Scope Process -Force` Maybe?
