@@ -18,7 +18,10 @@
           "powerline_symbol": "\ue0b0",
           "properties": {
             "home_icon": "~",
-            "style": "full"
+            "style": "unique",
+            "mapped_locations": {
+              "C:\\Users\\henrik.gjestang\\AppData\\Local\\Packages\\CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc\\LocalState\\rootfs\\home\\henriklg": "\uF09B"
+            }
           },
           "style": "powerline",
           "template": " \uf07c {{ .Path }} ",
