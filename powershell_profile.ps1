@@ -1,3 +1,8 @@
+# ADD THE FOLLOWING TO Microsoft.PowerShell_profile.ps1 FILE
+# Start powershell profile from windows-dotfiles
+# $dev_path = $Home+"\dev"
+# ". $dev_path\dotfiles-windows\powershell_profile.ps1" | Invoke-Expression
+
 ###########
 # Modules #
 ###########
@@ -6,7 +11,7 @@ try {
   Enable-PoshTransientPrompt
 }
 catch {
-  winget install JanDeDobbeleer.OhMyPosh -s winget
+  # winget install JanDeDobbeleer.OhMyPosh -s winget
   Write-Host "Oh-my-posh not installed"
   Write-Host $_
 }
@@ -17,8 +22,9 @@ Write-Host "Hi! 🌞🚀"
 #############
 # Variables #
 #############
-$ubuntu_home = "Microsoft.PowerShell.Core\FileSystem::\\wsl$\Ubuntu-20.04\home\henriklg\"
-$windows_home = $Home+"\"
+# $ubuntu_home = "Microsoft.PowerShell.Core\FileSystem::\\wsl$\Ubuntu-20.04\home\henriklg\"
+$windows_home = $Home + "\"
+$ubuntu_home = ($windows_home + "AppData\Local\Packages\CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc\LocalState\rootfs\home\henriklg")
 $onedrive = ($windows_home + "OneDrive\")
 
 
@@ -100,44 +106,4 @@ for($i = 1; $i -le 5; $i++){
   $d =  $u.Replace("u","../")
   Invoke-Expression "function $u { push-location $d }"
   Invoke-Expression "function $unum { push-location $d }"
-}
-
-
-function Load-Module {
-  <#
-  .SYNOPSIS
-  .DESCRIPTION
-  Import a module with try/catch and return true if successful and false if not.
-  .EXAMPLE
-  try {
-    if (Load-Module "oh-my-posh") {
-      # do nothing
-    }
-    else {
-        Write-Host "Failed to load $moduleName"
-    }
-  }
-  catch {
-      Write-Host "Exception caught: $_"
-  }
-  #>
-  param (
-      [parameter(Mandatory = $true)][string] $name
-  )
-
-  $retVal = $true
-
-  if (!(Get-Module -ListAvailable -Name $name)) {
-      $retVal = Get-Module -ListAvailable | where { $_.Name -eq $name }
-
-      if ($retVal) {
-          try {
-              Import-Module $name -ErrorAction SilentlyContinue
-          }
-          catch {
-              $retVal = $false
-          }
-      }
-  }
-  return $retVal
 }
