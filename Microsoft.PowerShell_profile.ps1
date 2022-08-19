@@ -2,22 +2,12 @@
 # Modules #
 ###########
 try {
-  # oh-my-posh init pwsh | Invoke-Expression
   oh-my-posh init pwsh --config ~\dev\dotfiles-windows\pk10_custom_theme.omp.json | Invoke-Expression
   Enable-PoshTransientPrompt
 }
 catch {
-  # winget install JanDeDobbeleer.OhMyPosh -s winget
+  winget install JanDeDobbeleer.OhMyPosh -s winget
   Write-Host "Oh-my-posh not installed"
-  Write-Host $_
-}
-
-try {
-  $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-  Import-Module "$ChocolateyProfile"
-}
-catch {
-  Write-Host "Chocolatey not installed"
   Write-Host $_
 }
 
