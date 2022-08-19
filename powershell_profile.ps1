@@ -23,9 +23,9 @@ Write-Host "Hi! 🌞🚀"
 # Variables #
 #############
 # $ubuntu_home = "Microsoft.PowerShell.Core\FileSystem::\\wsl$\Ubuntu-20.04\home\henriklg\"
-$windows_home = $Home + "\"
-$ubuntu_home = ($windows_home + "AppData\Local\Packages\CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc\LocalState\rootfs\home\henriklg")
-$onedrive = ($windows_home + "OneDrive\")
+$windows_home = $Home
+$ubuntu_home = ("$windows_home\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc\LocalState\rootfs\home\henriklg")
+$onedrive = ("$windows_home\OneDrive")
 
 
 #########
@@ -41,12 +41,12 @@ function x { exit }
 # Directories
 function xhome { Set-Location $ubuntu_home }
 function home { Set-Location $windows_home }
-function xdoc { Set-Location ($ubuntu_home + "Documents\") }
-function doc { Set-Location ($windows_home + "Documents\") }
-function xdown { Set-Location ($ubuntu_home + "Downloads\") }
-function down { Set-Location ($windows_home + "Downloads\") }
-function xdev { Set-Location ($ubuntu_home + "dev\") }
-function dev { Set-Location ($windows_home + "dev\") }
+function xdoc { Set-Location ("$ubuntu_home\Documents") }
+function doc { Set-Location ("$windows_home\Documents") }
+function xdown { Set-Location "$ubuntu_home\Downloads" }
+function down { Set-Location "$windows_home\Downloads" }
+function xdev { Set-Location "$ubuntu_home\dev" }
+function dev { Set-Location "$windows_home\dev" }
 
 # Applications
 Set-Alias py "python3"
