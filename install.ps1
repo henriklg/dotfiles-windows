@@ -1,7 +1,6 @@
 # _____________________________________________________
 # Script to set up and install dependencies like pyenv,
-# poetry, MS terminal, powershell 7, Oh-my-posh,
-# chocolatey, powerlevel with themes etc.
+# poetry, terminal, powershell 7, Oh-my-posh
 
 # NB: Script must be run as a administrative shell
 # _____________________________________________________
@@ -20,6 +19,8 @@ winget install Git.Git
 winget install Lexikos.AutoHotkey
 winget install Docker.DockerDesktop
 winget install Microsoft.VisualStudioCode
+# notepad++
+# python?
 
 
 # _____________________________________________________
@@ -42,7 +43,7 @@ Set-Content -Path $PROFILE -Value '". $HOME\dev\dotfiles-windows\powershell_prof
 # Pyenv
 Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1"
 
-# Poetry
+# Poetry - NB: needs python installed
 (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
 #poetry config virtualenvs.in-project true
 

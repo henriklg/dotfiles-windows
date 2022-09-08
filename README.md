@@ -3,7 +3,7 @@
 
 ## Using Git and the bootstrap script
 
-You can clone the repository wherever you want. (I like to keep it in `~/dev/dotfiles-windows`, with `~/dotfiles` as a symlink.) The bootstrapper script will pull in the latest version (of MS terminal config, Git config, PowerShell profile, and Oh-My-Posh theme/config) and copy the files to the correct folder.
+You can clone the repository wherever you want, I like to keep it in `~/dev/dotfiles-windows`. The bootstrapper script will pull in the latest version (of MS terminal config, Git config, PowerShell profile, and Oh-My-Posh theme/config) and copy the files to the correct folder.
 
 ```ps
 git clone git@github.com:henriklg/dotfiles-windows.git; cd dotfiles-windows; .\bootstrap.ps1
@@ -92,19 +92,17 @@ Install Poetry
 
 ***
 
-## Other useful notes
-
-- Oh-My-Posh will be added if the powershell.config file is transfered.
-- Need to set font to MesloLGS in powershell and vscode etc
-
-
-
-***
 ## TODO
 - [ ] Set up bootstrap script
   - [ ] Get user confirmation to override
   - [ ] Sync from github
-  - [ ] Copy pwsh profile to directory
+  - [ ] add bootstrap to pwsh reload func
 - [ ] Set up install script
-  - [ ] chocolatey, MS terminal, Pyenv, poetry, git, fonts, pwsh, oh-my-posh
+  - [ ] winget: add test to avoid overriding installing
+  - [ ] test install script
+  - [ ] symlink to gitignore
+  - [ ] add install_extended with wsl?
+  - [ ] disable windows app aliases for python
+- [ ] add script for de-bloating windows
+- [ ] update readme
 - [x] ~~Add dotfiles, configs, themes and fonts to repository~~
