@@ -1,60 +1,56 @@
-# ___
-# Script to set up and install dependencies like pyenv, poetry, MS terminal, powershell 8,
-# Oh-my-posh, chocolatey, powerlevel with themes etc.
+# _____________________________________________________
+# Script to set up and install dependencies like pyenv,
+# poetry, MS terminal, powershell 7, Oh-my-posh,
+# chocolatey, powerlevel with themes etc.
 
 # NB: Script must be run as a administrative shell
-# ___
+# _____________________________________________________
 
 # to run script, set execution policy with PS-admin:
 Set-ExecutionPolicy AllSigned
 
-# ___
-# Git
-# ___
-# (gp HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*).DisplayName -Match "git"
+
+# ______________
+# Winget install
+# ______________
+winget install Microsoft.PowerShell
+winget install Microsoft.WindowsTerminal
+winget install JanDeDobbeleer.OhMyPosh
+winget install Git.Git
+winget install Lexikos.AutoHotkey
+winget install Docker.DockerDesktop
+winget install Microsoft.VisualStudioCode
 
 
-# ____________
-# Install PS 7
-# ____________
-# Check if already installed
-# NB: only checks if installed with windows store
-Import-Module Appx -usewindowspowershell
-$software = "Powershell_7"
-$installed = Get-AppxPackage -AllUsers | Select PackageFullName | Select-String -Pattern $software -quiet
-If(-Not $installed) {
-	Write-Host "'$software' is NOT installed.";
-} else {
-    # Install
-    msiexec.exe /package PowerShell-7.1.5-win-x64.msi /quiet ADD_EXPLORER_CONTEXT_MENU_OPENPOWERSHELL=1 ENABLE_PSREMOTING=1 REGISTER_MANIFEST=1
-}
+# _____________________________________________________
+# Symlink Windows Terminal Settings to dotfiles-windows
+# _____________________________________________________
+Remove-Item -Path $Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState -Force –Recurse
+New-Item -ItemType SymbolicLink -Path "$Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState" -Target "$HOME\dev\dotfiles-windows\terminal_setup"
 
 
-# __________________
-# Install chocolatey
-# __________________
-try {
-    $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-    if (Test-Path($ChocolateyProfile)) {
-        Import-Module "$ChocolateyProfile" -ErrorAction Stop
-    }
-}
-catch {
-    Write-Host "Not installed - installing.."
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-}
+# ______________________________________
+# Point pwsh profile to dotfiles-windows
+# ______________________________________
+# NB: must be run from pwsh 7
+Set-Content -Path $PROFILE -Value '". $HOME\dev\dotfiles-windows\powershell_profile.ps1" | Invoke-Expression'
 
 
-# __________________
-# Install oh-my-posh
-# __________________
-# Set fonts
+# __________
+# Python env
+# __________
+# Pyenv
+Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1"
+
+# Poetry
+(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
+#poetry config virtualenvs.in-project true
+
+
+# _____________
+# Install fonts
+# _____________
 Install-Fonts
-# install oh-my-posh
-choco install oh-my-posh
-# Move theme
-Copy-Item -Path ".pl10k_custom_theme.json" -Destination "C:\Users\henrik.gjestang\OneDrive - Itera\Documents\PowerShell\Modules\oh-my-posh\5.7.0\themes"
-
 
 
 # _________
@@ -83,15 +79,5 @@ function Install-Fonts {
                 $objFolder.CopyHere($File.fullname)
             }
         }
-    }
-}
-
-function Check-Installed($software) {
-    $version = Invoke-Expression $"($software --version)"
-
-    If($?) {
-        Write-Host "'$software' version '$version' is installed.";
-    } else {
-        Write-Host "'$software' is Not installed."
     }
 }
