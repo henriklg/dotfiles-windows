@@ -1,7 +1,7 @@
 # ADD THE FOLLOWING TO Microsoft.PowerShell_profile.ps1 FILE
 # Start powershell profile from windows-dotfiles
-# $dev_path = $Home+"\dev"
-# ". $dev_path\dotfiles-windows\powershell_profile.ps1" | Invoke-Expression
+#
+# ". $HOME\dev\dotfiles-windows\powershell_profile.ps1" | Invoke-Expression
 
 ###########
 # Modules #
@@ -22,7 +22,7 @@ Write-Host "Hi! 🌞🚀"
 # Variables #
 #############
 # $ubuntu_home = "Microsoft.PowerShell.Core\FileSystem::\\wsl$\Ubuntu-20.04\home\henriklg\"
-$windows_home = $Home
+$windows_home = $HOME
 $ubuntu_home = ("$windows_home\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc\LocalState\rootfs\home\henriklg")
 $onedrive = ("$windows_home\OneDrive")
 
