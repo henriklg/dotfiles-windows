@@ -217,6 +217,10 @@
       "type": "rprompt"
     }
   ],
+  "transient_prompt": {
+    "background": "transparent",
+    "template": "{{ .Shell }}> "
+  },
   "console_title_template": "{{ .Shell }} in {{ .Folder }}",
   "final_space": true,
   "version": 2
