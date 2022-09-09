@@ -27,6 +27,7 @@ winget install Microsoft.VisualStudioCode
 # Symlink Windows Terminal Settings to dotfiles-windows
 # _____________________________________________________
 Remove-Item -Path $Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState -Force –Recurse
+# need admin to symlink
 New-Item -ItemType SymbolicLink -Path "$Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState" -Target "$HOME\dev\dotfiles-windows\terminal_setup"
 
 
