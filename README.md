@@ -97,10 +97,11 @@ Install Poetry
   - [ ] Get user confirmation to override
   - [ ] Sync from github
   - [ ] add bootstrap to pwsh reload func
+  - [ ] decide if best to symlink or push configs
 - [ ] Set up install script
   - [ ] winget: add test to avoid overriding installing
   - [ ] test install script
-  - [ ] symlink to gitignore
+  - [ ] symlink to gitignore (or bootstrap instead)
   - [ ] add install_extended with wsl?
   - [ ] disable windows app aliases for python
 - [ ] add script for de-bloating windows
