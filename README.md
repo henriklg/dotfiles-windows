@@ -23,10 +23,10 @@ Short description of what actions are executed (or should be, when finished) whe
 
 Optional (but highly recommended):
 - Install [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab): `winget install Microsoft.WindowsTerminal`
-- Install [Oh-My-Posh](https://github.com/jandedobbeleer/oh-my-posh): `winget install JanDeDobbeleer.OhMyPosh -s winget` and [MesloLGS NF](https://github.com/henriklg/dotfiles-windows/tree/main/fonts) fonts (`oh-my-posh font install meslo` as admin) and Terminal-Icons package `Install-Module -Name Terminal-Icons -Repository PSGallery`.
-- Install VS code (`winget install Microsoft.VisualStudioCode`) and sign in with GitHub account for automatically setup of config files
+- Install [Oh-My-Posh](https://github.com/jandedobbeleer/oh-my-posh): `winget install JanDeDobbeleer.OhMyPosh -s winget` (or use MS Store) and [Meslo fonts](https://www.nerdfonts.com/font-downloads) - can also be installed with oh-my-posh: (`oh-my-posh font install meslo` as admin), and lastly, Terminal-Icons package `Install-Module -Name Terminal-Icons -Repository PSGallery`.
+- Install VS code (`winget install Microsoft.VisualStudioCode`) and sign in with GitHub account for automatically setup of config files.
 - Install gsudo: `winget install gerardog.gsudo`
-- `Set-ExecutionPolicy Bypass -Scope Process -Force` Maybe?
+- `Set-ExecutionPolicy Bypass -Scope Process -Force` (sometimes required, but perhaps not always).
 
 
 <details close>
