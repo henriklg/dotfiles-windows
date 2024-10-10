@@ -17,20 +17,13 @@ To update, `cd` into your local `dotfiles` repository and then:
 
 To update later on, just run that command again.
 
-## Git-free install
-
-To install these dotfiles without Git:
-
-```ps
-TODO
-```
 
 # install.ps1 (script not yet finished)
 Short description of what actions are executed (or should be, when finished) when running install.ps1:
 
 Optional (but highly recommended):
 - Install [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab): `winget install Microsoft.WindowsTerminal`
-- Install [Oh-My-Posh](https://github.com/jandedobbeleer/oh-my-posh): `winget install JanDeDobbeleer.OhMyPosh -s winget` and [MesloLGS NF](https://github.com/henriklg/dotfiles-windows/tree/main/fonts) fonts (`oh-my-posh font install` as admin).
+- Install [Oh-My-Posh](https://github.com/jandedobbeleer/oh-my-posh): `winget install JanDeDobbeleer.OhMyPosh -s winget` and [MesloLGS NF](https://github.com/henriklg/dotfiles-windows/tree/main/fonts) fonts (`oh-my-posh font install meslo` as admin) and Terminal-Icons package `Install-Module -Name Terminal-Icons -Repository PSGallery`.
 - Install VS code (`winget install Microsoft.VisualStudioCode`) and sign in with GitHub account for automatically setup of config files
 - Install gsudo: `winget install gerardog.gsudo`
 - `Set-ExecutionPolicy Bypass -Scope Process -Force` Maybe?
@@ -52,7 +45,7 @@ Install PowerShell 7
 Install Git
 </summary>
 
-- pwsh: `winget install --id Git.Git -e --source winget`
+- pwsh: `winget install Git.Git`
 - Site: [Git](https://git-scm.com/download/win)
 - Optional: [GitHub Desktop](https://desktop.github.com/)
 - NB: remember to set `.gitconfig`
@@ -64,7 +57,7 @@ Install Git
 Install Pyenv
 </summary>
 
-- pwsh:
+- pwsh (kan og bruke pipx):
 ```ps
 Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1"
 ```
