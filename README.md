@@ -97,6 +97,5 @@ Install Poetry
   - [ ] symlink to gitignore (or bootstrap instead)
   - [ ] add install_extended with wsl?
   - [ ] disable windows app aliases for python
-- [ ] add script for de-bloating windows
 - [ ] update readme
 - [x] ~~Add dotfiles, configs, themes and fonts to repository~~
