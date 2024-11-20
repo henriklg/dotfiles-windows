@@ -1,22 +1,11 @@
-# ADD THE FOLLOWING TO Microsoft.PowerShell_profile.ps1 FILE
-# Start powershell profile from windows-dotfiles
+# ADD THE FOLLOWING TO Microsoft.PowerShell_profile.ps1 file
+# 
+# Activate powershell profile from windows-dotfiles
 #
 # ". $HOME\dev\dotfiles-windows\powershell_profile.ps1" | Invoke-Expression
 
-###########
-# Modules #
-###########
-try {
-  oh-my-posh init pwsh --config ~\dev\dotfiles-windows\pk10_custom_theme.omp.json | Invoke-Expression
-}
-catch {
-  # winget install JanDeDobbeleer.OhMyPosh -s winget
-  Write-Host "Oh-my-posh not installed"
-  Write-Host $_
-}
 
 Write-Host "Hi! 🌞🚀"
-
 
 #############
 # Variables #
@@ -25,7 +14,9 @@ Write-Host "Hi! 🌞🚀"
 $windows_home = $HOME
 $ubuntu_home = ("$windows_home\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc\LocalState\rootfs\home\henriklg")
 $onedrive = ("$windows_home\OneDrive")
-
+$history_path = ("$env:APPDATA\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt")
+# Remove venv prompt in shell (not compatible with oh-my-posh)
+$env:VIRTUAL_ENV_DISABLE_PROMPT = 1
 
 #########
 # Alias #
@@ -33,7 +24,8 @@ $onedrive = ("$windows_home\OneDrive")
 # Misc
 Set-Alias pd "Get-Location"
 Set-Alias hy "history"
-function hist { Get-Content ($env:APPDATA+"\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt") }
+Set-Alias grep "findstr"
+function hist { Get-Content $history_path }
 function reload { . $profile }
 function x { exit }
 
@@ -48,9 +40,10 @@ function xdev { Set-Location "$ubuntu_home\dev" }
 function dev { Set-Location "$windows_home\dev" }
 
 # Applications
-Set-Alias py "python3"
+Set-Alias py "python"
 Set-Alias juno "jupyter notebook"
 Set-Alias jula "jupyter lab"
+# Set-Alias dbx "databricks"
 
 # Git
 function Get-GitStatus { & git status -sb $args }
@@ -105,4 +98,45 @@ for($i = 1; $i -le 5; $i++){
   $d =  $u.Replace("u","../")
   Invoke-Expression "function $u { push-location $d }"
   Invoke-Expression "function $unum { push-location $d }"
+}
+
+# Initiate Oh-My-Posh and load theme
+try {
+  oh-my-posh init pwsh --config ~\dev\dotfiles-windows\oh-my-posh\pk10_custom_theme.omp.json | Invoke-Expression
+}
+catch [System.SystemException] {
+  Write-Host $_
+  Write-Host "Oh-my-posh not installed. Lets try to install it.."
+  winget install JanDeDobbeleer.OhMyPosh -s winget
+  oh-my-posh init pwsh --config ~\dev\dotfiles-windows\oh-my-posh\pk10_custom_theme.omp.json | Invoke-Expression
+}
+
+# Icons for files and folders
+try {
+  Import-Module -Name Terminal-Icons
+}
+catch {
+  Write-Host $_
+  Write-Host "Terminal-Icons not installed. Lets try to install it.."
+  Install-Module -Name Terminal-Icons -Repository PSGallery
+  Import-Module -Name Terminal-Icons
+}
+
+# Tab-completions in UV
+try {
+  (& uv generate-shell-completion powershell) | Out-String | Invoke-Expression
+}
+catch {
+  Write-Host "UV not installed."
+}
+
+# Tab completions in Winget
+Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
+  param($wordToComplete, $commandAst, $cursorPosition)
+      [Console]::InputEncoding = [Console]::OutputEncoding = $OutputEncoding = [System.Text.Utf8Encoding]::new()
+      $Local:word = $wordToComplete.Replace('"', '""')
+      $Local:ast = $commandAst.ToString().Replace('"', '""')
+      winget complete --word="$Local:word" --commandline "$Local:ast" --position $cursorPosition | ForEach-Object {
+          [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+      }
 }
