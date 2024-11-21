@@ -1,7 +1,6 @@
 # ADD THE FOLLOWING TO Microsoft.PowerShell_profile.ps1 file
 # 
-# Activate powershell profile from windows-dotfiles
-#
+## Activate powershell profile from windows-dotfiles
 # ". $HOME\dev\dotfiles-windows\powershell_profile.ps1" | Invoke-Expression
 
 
@@ -10,7 +9,6 @@ Write-Host "Hi! 🌞🚀"
 #############
 # Variables #
 #############
-# $ubuntu_home = "Microsoft.PowerShell.Core\FileSystem::\\wsl$\Ubuntu-20.04\home\henriklg\"
 $windows_home = $HOME
 $ubuntu_home = ("$windows_home\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc\LocalState\rootfs\home\henriklg")
 $onedrive = ("$windows_home\OneDrive")
@@ -25,8 +23,16 @@ $env:VIRTUAL_ENV_DISABLE_PROMPT = 1
 Set-Alias pd "Get-Location"
 Set-Alias hy "history"
 Set-Alias grep "findstr"
+Set-Alias evac ".\.venv\Scripts\Activate.ps1"
+Set-Alias evde "deactivate"
+# Applications
+Set-Alias py "python"
+Set-Alias juno "jupyter notebook"
+Set-Alias jula "jupyter lab"
+# Set-Alias dbx "databricks"
+
 function hist { Get-Content $history_path }
-function reload { . $profile }
+# function reload { . $PROFILE }
 function x { exit }
 
 # Directories
@@ -38,12 +44,6 @@ function xdown { Set-Location "$ubuntu_home\Downloads" }
 function down { Set-Location "$windows_home\Downloads" }
 function xdev { Set-Location "$ubuntu_home\dev" }
 function dev { Set-Location "$windows_home\dev" }
-
-# Applications
-Set-Alias py "python"
-Set-Alias juno "jupyter notebook"
-Set-Alias jula "jupyter lab"
-# Set-Alias dbx "databricks"
 
 # Git
 function Get-GitStatus { & git status -sb $args }
@@ -128,6 +128,7 @@ try {
 }
 catch {
   Write-Host "UV not installed."
+  #winget install astral-sh.uv
 }
 
 # Tab completions in Winget
@@ -139,4 +140,19 @@ Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
       winget complete --word="$Local:word" --commandline "$Local:ast" --position $cursorPosition | ForEach-Object {
           [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
       }
+}
+
+# Reload PWSH profile the correct way
+function reload {
+  @(
+      $Profile.AllUsersAllHosts,
+      $Profile.AllUsersCurrentHost,
+      $Profile.CurrentUserAllHosts,
+      $Profile.CurrentUserCurrentHost
+  ) | ForEach-Object {
+      if(Test-Path $_){
+          Write-Verbose "Running $_"
+          . $_
+      }
+  }
 }
