@@ -5,7 +5,7 @@
 # Flow:
 # - Ask user for confirmation
 # - Grab origin main from repo
-# - Copy to correct direcotries
+# - Copy to correct directories
 # - Source profile etc
 #   - add sourcing of pwsh profile in local profile.ps1 (look in top of powershell_profile.ps1) and run "reload"
 #   - add symlink to terminal settings-file
