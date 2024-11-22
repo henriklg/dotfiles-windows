@@ -4,7 +4,7 @@ Set up and configure environment for data science development. Sync config chang
 
 ## Using Git and the bootstrap script
 
-You can clone the repository wherever you want, I like to keep it in `~/dev/dotfiles-windows`. The bootstrapper script will pull in the latest version (of MS terminal config, Git config, PowerShell profile, and Oh-My-Posh theme/config) and copy the files to the correct folder.
+You can clone the repository wherever you want, I like to keep it in `~/dev/dotfiles-windows`. The bootstrapping script will pull in the latest version (of MS terminal config, Git config, PowerShell profile, and Oh-My-Posh theme/config) and copy the files to the correct folder.
 
 ```ps
 git clone git@github.com:henriklg/dotfiles-windows.git; cd dotfiles-windows; .\bootstrap.ps1
@@ -45,10 +45,10 @@ Description of how to use [bootstrap.ps1](/bootstrap.ps1). Run after making upda
 
 - [ ] Get started
 
-## Ideas and thoughs
+## Ideas and thoughts
 
 - Automatically run bootstrap from Reload-Profile in PWSH Profile?
 - Decide if best to symlink or overwrite config-files
-- Include vscode_usersettings, with symlink? (syncing through github-profile today)
+- Include vscode settings-file, with symlink? (syncing through github-profile today)
 - Run install.ps1 from bootstrap on first run?
-- Stucture repo so only bootstrap, install, and readme is in repo root directory.
+- Structure repo so only bootstrap, install, and readme is in repo root directory.
