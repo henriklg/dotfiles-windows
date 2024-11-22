@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "streetsidesoftware.code-spell-checker",
+        "vivaxy.vscode-conventional-commits",
+        "usernamehw.errorlens",
+        "yzhang.markdown-all-in-one",
+        "davidanson.vscode-markdownlint",
+        "streetsidesoftware.code-spell-checker-norwegian-bokmal",
+        "charliermarsh.ruff",
+        "ms-vscode.powershell",
+    ]
+}
