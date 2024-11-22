@@ -1,5 +1,6 @@
-# Dotfiles for windows
+# Dotfiles for Windows
 
+Set up and configure environment for data science development. Sync config changes between different machines.
 
 ## Using Git and the bootstrap script
 
@@ -15,87 +16,39 @@ To update, `cd` into your local `dotfiles` repository and then:
 .\bootstrap.ps1
 ```
 
-To update later on, just run that command again.
+## install.ps1
 
+Short description of what actions are executed (or should be, when finished) when running [install.ps1](/install.ps1):
 
-# install.ps1 (script not yet finished)
-Short description of what actions are executed (or should be, when finished) when running install.ps1:
+- Install all tools and packages needed for Data Science development.
+- Override (or set up symlink) config files related to respective tools.
+- Enable the user to update all tools and packages by running `install.ps1 --update`.
 
-Optional (but highly recommended):
-- Install [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab): `winget install Microsoft.WindowsTerminal`
-- Install [Oh-My-Posh](https://github.com/jandedobbeleer/oh-my-posh): `winget install JanDeDobbeleer.OhMyPosh -s winget` (or use MS Store) and [Meslo fonts](https://www.nerdfonts.com/font-downloads) - can also be installed with oh-my-posh: (`oh-my-posh font install meslo` as admin), and lastly, Terminal-Icons package `Install-Module -Name Terminal-Icons -Repository PSGallery`.
-- Install VS code (`winget install Microsoft.VisualStudioCode`) and sign in with GitHub account for automatically setup of config files.
-- Install gsudo: `winget install gerardog.gsudo`
-- `Set-ExecutionPolicy Bypass -Scope Process -Force` (sometimes required, but perhaps not always).
+### Install TODOS
 
+- [ ] winget: add test to avoid overriding installing
+- [ ] test install script
+- [ ] symlink to gitignore (or bootstrap instead)
+- [ ] add install_extended with wsl?
+- [ ] add functionality for running upgrade-all
+- [ ] disable windows app aliases for python
 
-<details close>
-<summary>
-Install PowerShell 7
-</summary>
+## bootstrap.ps1
 
-- pwsh: `winget install PowerShell`
-- [Microsoft docs](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2)
-- [github.com/PowerShell](https://github.com/PowerShell/PowerShell/releases)
-</details>
+Description of how to use [bootstrap.ps1](/bootstrap.ps1). Run after making updates to config files.
 
+- Ask user for confirmation to make changes to local files.
+- Fetch from main.
+- Overwrite local config files with content from main.
 
-<details close>
-<summary>
-Install Git
-</summary>
+### Bootstrap TODOS
 
-- pwsh: `winget install Git.Git`
-- Site: [Git](https://git-scm.com/download/win)
-- Optional: [GitHub Desktop](https://desktop.github.com/)
-- NB: remember to set `.gitconfig`
-</details>
+- [ ] Get started
 
+## Ideas and thoughs
 
-<details close>
-<summary>
-Install Pyenv
-</summary>
-
-- pwsh (kan og bruke pipx):
-```ps
-Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1"
-```
-- [Pyenv repo](https://github.com/pyenv-win/pyenv-win)
-- Disable windows app aliases
-- Install Python 3.9.0: `pyenv install 3.9.0`
-</details>
-
-
-<details close>
-<summary>
-Install Poetry
-</summary>
-
-- [Poetry website](https://python-poetry.org/docs/#windows-powershell-install-instructions)
-- [Poetry GitHub](https://github.com/python-poetry/poetry)
-- Run the following in PowerShell (admin not needed):
-```ps
-(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
-```
-- Run: `poetry config virtualenvs.in-project true` to store environments files in project folder
-- Update (NB: Admin required): `poetry self update` (add '--preview' for latest preview)
-</details>
-
-
-***
-
-## TODO
-- [ ] Set up bootstrap script
-  - [ ] Get user confirmation to override
-  - [ ] Sync from github
-  - [ ] add bootstrap to pwsh reload func
-  - [ ] decide if best to symlink or push configs
-- [ ] Set up install script
-  - [ ] winget: add test to avoid overriding installing
-  - [ ] test install script
-  - [ ] symlink to gitignore (or bootstrap instead)
-  - [ ] add install_extended with wsl?
-  - [ ] disable windows app aliases for python
-- [ ] update readme
-- [x] ~~Add dotfiles, configs, themes and fonts to repository~~
+- Automatically run bootstrap from Reload-Profile in PWSH Profile?
+- Decide if best to symlink or overwrite config-files
+- Include vscode_usersettings, with symlink? (syncing through github-profile today)
+- Run install.ps1 from bootstrap on first run?
+- Stucture repo so only bootstrap, install, and readme is in repo root directory.

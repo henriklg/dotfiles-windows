@@ -8,34 +8,25 @@
 # to run script, set execution policy with PS-admin:
 Set-ExecutionPolicy AllSigned
 
-
 # ______________
 # Winget install
 # ______________
-winget install Microsoft.PowerShell
-winget install Microsoft.WindowsTerminal
-winget install JanDeDobbeleer.OhMyPosh
+winget install Microsoft.PowerShell (msstore)
+winget install Microsoft.WindowsTerminal (msstore)
+winget install JanDeDobbeleer.OhMyPosh (msstore)
 winget install Git.Git
-winget install Lexikos.AutoHotkey
-winget install Docker.DockerDesktop
 winget install Microsoft.VisualStudioCode
-# notepad++
-# python?
+winget install astral-sh.uv
+winget install astral-sh.ruff
+# docker, gsudo, notepad++, python, wsl?
 
-
-# _____________________________________________________
-# Symlink Windows Terminal Settings to dotfiles-windows
-# _____________________________________________________
-Remove-Item -Path $Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState -Force –Recurse
-# need admin to symlink
-New-Item -ItemType SymbolicLink -Path "$Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState" -Target "$HOME\dev\dotfiles-windows\terminal_setup"
-
-
-# ______________________________________
-# Point pwsh profile to dotfiles-windows
-# ______________________________________
-# NB: must be run from pwsh 7
-Set-Content -Path $PROFILE -Value '". $HOME\dev\dotfiles-windows\powershell_profile.ps1" | Invoke-Expression'
+# ______________
+# Other installs
+# ______________
+# Nerd fonts (from fonts-dir in repo, or 'oh-my-posh font install meslo')
+# Terminal-Icons (done automatically from profile.ps1, or manually with 'Install-Module - Name Terminal-Icons')
+# Pyenv? (disable windows app aliases)
+# Poetry? ('poetry config virtualenvs.in-project true' to store venv in project folder)
 
 
 # __________
@@ -58,6 +49,8 @@ Install-Fonts
 # _________
 # Functions
 # _________
+
+# NB: not tested!
 function Install-Fonts {
     $FONTS = 0x14
     $Path = ".\fonts"
