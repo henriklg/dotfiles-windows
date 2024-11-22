@@ -1,0 +1,146 @@
+{
+    // _________________
+    // Language specific
+    // _________________
+    "[markdown]": {
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "other": "off",
+            "strings": "off"
+        },
+        "editor.wordWrap": "on"
+    },
+    "[plaintext]": {
+        "editor.autoClosingBrackets": "never",
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "other": "off",
+            "strings": "off"
+        }
+    },
+    "breadcrumbs.enabled": false,
+    //_____________
+    // Git settings
+    // ____________
+    "diffEditor.ignoreTrimWhitespace": false,
+    // _______________
+    // Editor settings
+    // _______________
+    // disables enter for accept suggestion - use tab instead
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.copyWithSyntaxHighlighting": false,
+    "editor.hover.above": false,
+    // Controls the delay in milliseconds after which the hover is shown.
+    "editor.hover.delay": 500,
+    "editor.hover.enabled": true,
+    "editor.inlineSuggest.enabled": true,
+    // editor highlighting on cursor
+    "editor.occurrencesHighlight": "off",
+    // Controls whether suggestions should automatically show up while typing.
+    "editor.quickSuggestions": {
+        "comments": false,
+        "other": false,
+        "strings": false
+    },
+    "editor.quickSuggestionsDelay": 100,
+    "editor.selectionHighlight": true,
+    "explorer.autoReveal": false,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    // _____
+    // Files
+    // _____
+    // Configure glob patterns for excluding files and folders. For example, the file Explorer decides which files and folders to show or hide based on this setting.
+    "files.exclude": {
+        "**/.git": false,
+        "**/.gitignore": false,
+        "**/.gitkeep": true,
+        "**/.ipynb_checkpoints": true,
+        "**/.vscode": true,
+        "**/__pycache__": true
+    },
+    "files.trimTrailingWhitespace": true,
+    // Configure glob patterns of file paths to exclude from file watching.
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/.venv/**": true,
+        "**/venv/**": true
+    },
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "git.ignoreMissingGitWarning": true,
+    // Controls when to show commit message input validation.
+    "git.inputValidation": true,
+    "github.copilot.enable": {
+        "*": true,
+        "jsonc": true,
+        "markdown": false,
+        "plaintext": true,
+        "python": true,
+        "yaml": false
+    },
+    // __________________________
+    // Jupyter notebook setttings
+    // __________________________
+    "jupyter.askForKernelRestart": false,
+    "jupyter.interactiveWindow.textEditor.executeSelection": true,
+    "jupyter.runStartupCommands": [
+        "%load_ext autoreload",
+        "%autoreload 2"
+    ],
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "right"
+    },
+    "notebook.diff.ignoreMetadata": true,
+    "notebook.diff.ignoreOutputs": true,
+    "powershell.enableProfileLoading": true,
+    "powershell.integratedConsole.showOnStartup": false,
+    "powershell.startAutomatically": false,
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingImports": "none"
+    },
+    // _______________
+    // Python settings
+    // _______________
+    "python.languageServer": "Pylance",
+    "python.linting.enabled": false,
+    // disable linting //NB: doesnt fully work?
+    "python.linting.lintOnSave": false,
+    "python.linting.pylintEnabled": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "settingsSync.ignoredSettings": [
+        // "window.zoomLevel", // standard 0
+        "python.defaultInterpreterPath",
+        "editor.fontSize" // standard 12??
+    ],
+    // OTHER THINGS
+    "statsBar.location": "Right",
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    // needed to make powerline work
+    //https://github.com/romkatv/dotfiles-public/tree/master/.local/share/fonts/NerdFonts
+    "terminal.integrated.fontFamily": "MesloLGS NF",
+    // ________
+    // Terminal
+    // ________
+    "terminal.integrated.inheritEnv": true,
+    // skip posh startup logo
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "args": [
+                "-nologo"
+            ],
+            "source": "PowerShell"
+        }
+    },
+    // ____________________________
+    // Startup and general settings
+    // ____________________________
+    "window.menuBarVisibility": "toggle",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "workbench.startupEditor": "none"
+}
