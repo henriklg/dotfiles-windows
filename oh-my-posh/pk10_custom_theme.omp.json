@@ -59,32 +59,6 @@
       "alignment": "right",
       "segments": [
         {
-          "background": "#00acd7",
-          "foreground": "#111111",
-          "invert_powerline": true,
-          "powerline_symbol": "\ue0b2",
-          "properties": {
-            "cache_duration": "none",
-            "fetch_version": true
-          },
-          "style": "powerline",
-          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} \ue627 ",
-          "type": "go"
-        },
-        {
-          "background": "#4063D8",
-          "foreground": "#111111",
-          "invert_powerline": true,
-          "powerline_symbol": "\ue0b2",
-          "properties": {
-            "cache_duration": "none",
-            "fetch_version": true
-          },
-          "style": "powerline",
-          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} \ue624 ",
-          "type": "julia"
-        },
-        {
           "background": "#FFDE57",
           "foreground": "#111111",
           "invert_powerline": true,
@@ -98,20 +72,6 @@
           "style": "powerline",
           "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} \ue235 ",
           "type": "python"
-        },
-        {
-          "background": "#AE1401",
-          "foreground": "#ffffff",
-          "invert_powerline": true,
-          "powerline_symbol": "\ue0b2",
-          "properties": {
-            "cache_duration": "none",
-            "display_mode": "files",
-            "fetch_version": true
-          },
-          "style": "powerline",
-          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} \ue791 ",
-          "type": "ruby"
         },
         {
           "background": "#FEAC19",
