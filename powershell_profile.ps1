@@ -4,13 +4,13 @@
 # ". $HOME\dev\dotfiles-windows\powershell_profile.ps1" | Invoke-Expression
 
 
-Write-Host "Hi! 🌞🚀"
+# Write-Host "Hi! 🌞🚀"
 
 #############
 # Variables #
 #############
 $windows_home = $HOME
-$ubuntu_home = ("$windows_home\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc\LocalState\rootfs\home\henriklg")
+# $ubuntu_home = ("$windows_home\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc\LocalState\rootfs\home\henriklg")
 $onedrive = ("$windows_home\OneDrive")
 $history_path = ("$env:APPDATA\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt")
 # Remove venv prompt in shell (not compatible with oh-my-posh)
@@ -27,8 +27,8 @@ Set-Alias evac ".\.venv\Scripts\Activate.ps1"
 Set-Alias evde "deactivate"
 # Applications
 Set-Alias py "python"
-Set-Alias juno "jupyter notebook"
-Set-Alias jula "jupyter lab"
+# Set-Alias juno "jupyter notebook"
+# Set-Alias jula "jupyter lab"
 # Set-Alias dbx "databricks"
 
 function hist { Get-Content $history_path }
@@ -36,13 +36,13 @@ function hist { Get-Content $history_path }
 function x { exit }
 
 # Directories
-function xhome { Set-Location $ubuntu_home }
+# function xhome { Set-Location $ubuntu_home }
 function home { Set-Location $windows_home }
-function xdoc { Set-Location ("$ubuntu_home\Documents") }
+# function xdoc { Set-Location ("$ubuntu_home\Documents") }
 function doc { Set-Location ("$windows_home\Documents") }
-function xdown { Set-Location "$ubuntu_home\Downloads" }
+# function xdown { Set-Location "$ubuntu_home\Downloads" }
 function down { Set-Location "$windows_home\Downloads" }
-function xdev { Set-Location "$ubuntu_home\dev" }
+# function xdev { Set-Location "$ubuntu_home\dev" }
 function dev { Set-Location "$windows_home\dev" }
 
 # Git
