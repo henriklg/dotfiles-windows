@@ -5,8 +5,10 @@
         "Meslo",
         "msstore",
         "nologo",
+        "onedrive",
         "powerline",
         "PWSH",
-        "pyenv"
+        "pyenv",
+        "winget"
     ]
 }
