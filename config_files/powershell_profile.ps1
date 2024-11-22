@@ -1,7 +1,7 @@
 # ADD THE FOLLOWING TO Microsoft.PowerShell_profile.ps1 file
 # 
 ## Activate powershell profile from windows-dotfiles
-# ". $HOME\dev\dotfiles-windows\powershell_profile.ps1" | Invoke-Expression
+# ". $HOME\dev\dotfiles-windows\config_files\powershell_profile.ps1" | Invoke-Expression
 
 
 # Write-Host "Hi! 🌞🚀"
