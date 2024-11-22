@@ -20,14 +20,13 @@
     "cSpell.customDictionaries": {},
     "cSpell.ignoreWords": [],
     "cSpell.userWords": [
-        "henriklg",
-        "onedrive",
         "venv"
     ],
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     "git.autofetch": true,
     "git.confirmSync": false,
+    "git.enableSmartCommit": true,
     "jupyter.askForKernelRestart": false,
     "jupyter.runStartupCommands": [
         "%load_ext autoreload",
