@@ -102,7 +102,7 @@ for($i = 1; $i -le 5; $i++){
 
 # Initiate Oh-My-Posh and load theme
 try {
-  oh-my-posh init pwsh --config ~\dev\dotfiles-windows\oh-my-posh\pk10_custom_theme.omp.json | Invoke-Expression
+  oh-my-posh init pwsh --config ~\dev\dotfiles-windows\config_files\oh-my-posh\pk10_custom_theme.omp.json | Invoke-Expression
 }
 catch [System.SystemException] {
   Write-Host $_
