@@ -1,4 +1,9 @@
 {
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "cSpell.language": "en-US,en-GB,nb",
+    "cSpell.spellCheckOnlyWorkspaceFiles": true,
     "cSpell.words": [
         "autofetch",
         "autoreload",
