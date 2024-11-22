@@ -51,4 +51,3 @@ Description of how to use [bootstrap.ps1](/bootstrap.ps1). Run after making upda
 - Decide if best to symlink or overwrite config-files
 - Include vscode settings-file, with symlink? (syncing through github-profile today)
 - Run install.ps1 from bootstrap on first run?
-- Structure repo so only bootstrap, install, and readme is in repo root directory.
