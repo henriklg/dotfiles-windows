@@ -26,3 +26,4 @@
 	c = commit
 	ca = commit -a
 	cm = commit -m
+	
