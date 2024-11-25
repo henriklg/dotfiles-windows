@@ -1,3 +1,28 @@
 [user]
 	email = henrik.logj@gmail.com
 	name = Henrik Gjestang
+	username = henriklg
+[init]
+	defaultBranch = master
+[core]
+	editor = code --wait --new-window
+[diff]
+    tool = default-difftool
+[difftool "default-difftool"]
+    cmd = code --wait --new-window --diff $LOCAL $REMOTE
+[web]
+	browser = google-chrome
+[github]
+	user = henriklg
+[alias]
+	a = add --all
+	#############
+	b = branch
+	ba = branch -a
+	bd = branch -d
+	bdd = branch -D
+	br = branch -r
+	#############
+	c = commit
+	ca = commit -a
+	cm = commit -m
