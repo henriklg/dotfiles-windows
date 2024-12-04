@@ -110,7 +110,7 @@ catch [System.SystemException] {
   Write-Host $_
   Write-Host "Oh-my-posh not installed. Lets try to install it.."
   winget install JanDeDobbeleer.OhMyPosh -s winget
-  oh-my-posh init pwsh --config ~\dev\dotfiles-windows\oh-my-posh\pk10_custom_theme.omp.json | Invoke-Expression
+  oh-my-posh init pwsh --config ~\dev\dotfiles-windows\config_files\oh-my-posh\pk10_custom_theme.omp.json | Invoke-Expression
 }
 
 # Icons for files and folders
