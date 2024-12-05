@@ -3,10 +3,16 @@
 ## Activate powershell profile from windows-dotfiles
 # ". $HOME\dev\dotfiles-windows\config_files\powershell_profile.ps1" | Invoke-Expression
 
-# slow load
-# https://stackoverflow.com/questions/59341482/powershell-steps-to-fix-slow-startup
 
-# Write-Host "Hi! 🌞🚀"
+#########
+# TODOS #
+#########
+## Fix slow load of pwsh profile
+# https://stackoverflow.com/questions/59341482/powershell-steps-to-fix-slow-startup
+## Refactoring of profile
+# - Split profile into multiple files, and load them from main profile
+# - One file for aliases, one for functions, one for modules, etc.
+
 
 #############
 # Variables #
