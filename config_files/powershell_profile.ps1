@@ -93,7 +93,7 @@ New-Alias -Name gtr -Value Get-GitTree -Force -Option AllScope
 #######################
 # Scripts / functions #
 #######################
-# Climb/Up function
+## Climb/Up function
 for($i = 1; $i -le 5; $i++){
   $u =  "".PadLeft($i,"u")
   $unum =  "u$i"
@@ -102,18 +102,20 @@ for($i = 1; $i -le 5; $i++){
   Invoke-Expression "function $unum { push-location $d }"
 }
 
-# Initiate Oh-My-Posh and load theme
+## Initiate Oh-My-Posh and load theme
+# Define the theme path
+$themePath = "~\dev\dotfiles-windows\config_files\oh-my-posh\pk10_custom_theme.omp.json"
 try {
-  oh-my-posh init pwsh --config ~\dev\dotfiles-windows\config_files\oh-my-posh\pk10_custom_theme.omp.json | Invoke-Expression
+  oh-my-posh init pwsh --config $themePath | Invoke-Expression
 }
 catch [System.SystemException] {
   Write-Host $_
   Write-Host "Oh-my-posh not installed. Lets try to install it.."
   winget install JanDeDobbeleer.OhMyPosh -s winget
-  oh-my-posh init pwsh --config ~\dev\dotfiles-windows\config_files\oh-my-posh\pk10_custom_theme.omp.json | Invoke-Expression
+  oh-my-posh init pwsh --config $themePath | Invoke-Expression
 }
 
-# Icons for files and folders
+## Icons for files and folders
 try {
   Import-Module -Name Terminal-Icons
 }
@@ -124,16 +126,18 @@ catch {
   Import-Module -Name Terminal-Icons
 }
 
-# Tab-completions in UV
+## Tab-completions in UV
 try {
   (& uv generate-shell-completion powershell) | Out-String | Invoke-Expression
 }
-catch {
-  Write-Host "UV not installed."
-  #winget install astral-sh.uv
+catch [System.SystemException] {
+  Write-Host $_
+  Write-Host "UV not installed. Let's try to install it.."
+  winget install astral-sh.uv -s winget
+  (& uv generate-shell-completion powershell) | Out-String | Invoke-Expression
 }
 
-# Tab completions in Winget
+## Tab completions in Winget
 Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
   param($wordToComplete, $commandAst, $cursorPosition)
       [Console]::InputEncoding = [Console]::OutputEncoding = $OutputEncoding = [System.Text.Utf8Encoding]::new()
@@ -144,7 +148,7 @@ Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
       }
 }
 
-# Reload PWSH profile the correct way
+## Reload PWSH profile the correct way
 function reload {
   @(
       $Profile.AllUsersAllHosts,
