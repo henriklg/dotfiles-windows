@@ -103,7 +103,6 @@ for($i = 1; $i -le 5; $i++){
 }
 
 ## Initiate Oh-My-Posh and load theme
-# Define the theme path
 $themePath = "~\dev\dotfiles-windows\config_files\oh-my-posh\pk10_custom_theme.omp.json"
 try {
   oh-my-posh init pwsh --config $themePath | Invoke-Expression
