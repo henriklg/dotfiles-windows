@@ -55,8 +55,10 @@ Write-Host "Installing pyenv-win..."
 Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"
 &"./install-pyenv-win.ps1"
 
+
 Write-Host "Installing Poetry..."
-(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
+Invoke-WebRequest -Uri https://install.python-poetry.org -OutFile install-poetry.py
+py install-poetry.py
 #poetry config virtualenvs.in-project true
 
 # Install fonts
