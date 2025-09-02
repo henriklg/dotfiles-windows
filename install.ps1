@@ -47,8 +47,6 @@ foreach ($tool in $wingetTools) {
 # Other installs
 # Nerd fonts (from fonts-dir in repo, or 'oh-my-posh font install meslo')
 # Terminal-Icons (done automatically from profile.ps1, or manually with 'Install-Module -Name Terminal-Icons')
-# Pyenv? (disable windows app aliases)
-# Poetry? ('poetry config virtualenvs.in-project true' to store venv in project folder)
 
 # Python env setup
 Write-Host "Installing pyenv-win..."
