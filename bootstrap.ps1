@@ -1,31 +1,46 @@
-# ___
-# Script for updating PS profile - pull from git, copy to correct directory
-# and reload profile.
+# Script for updating PS profile - pull from git, copy/symlink to correct directory, and reload profile.
 
-# Flow:
-# - Ask user for confirmation
-# - Grab origin main from repo
-# - Copy to correct directories
-# - Source profile etc
-#   - add sourcing of pwsh profile in local profile.ps1 (look in top of powershell_profile.ps1) and run "reload"
-#   - add symlink to terminal settings-file
-#   - add symlink to gitconfig-file
-#   - (maybe?) add symlink to vscode_usersettings-file
-# ___
+function Confirm-Action {
+    param([string]$Message)
+    $response = Read-Host "$Message (y/n)"
+    return $response -eq 'y'
+}
 
+if (-not (Confirm-Action "This will update your local config files. Continue?")) {
+    Write-Host "Aborted by user."
+    exit
+}
 
+# Pull latest from origin main
+Write-Host "Pulling latest changes from origin/main..."
+git pull origin main
 
-# _____________________________________________________
 # Symlink Windows Terminal Settings to dotfiles-windows
-# _____________________________________________________
-Remove-Item -Path $Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState -Force –Recurse
-# need admin to symlink
-New-Item -ItemType SymbolicLink -Path "$Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState" -Target "$HOME\dev\dotfiles-windows\terminal_setup"
+$terminalSettings = "$Env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState"
+if (Test-Path $terminalSettings) {
+    Remove-Item -Path $terminalSettings -Force -Recurse
+}
+New-Item -ItemType SymbolicLink -Path $terminalSettings -Target "$HOME\dev\dotfiles-windows\terminal_setup"
 
+# Example: Symlink VSCode settings (uncomment if needed)
+# $vscodeSettings = "$Env:APPDATA\Code\User\settings.json"
+# if (Test-Path $vscodeSettings) { Remove-Item $vscodeSettings -Force }
+# New-Item -ItemType SymbolicLink -Path $vscodeSettings -Target "$HOME\dev\dotfiles-windows\config_files\vscode_usersettings.json"
 
-# ______________________________________
+# Example: Symlink gitconfig (uncomment if needed)
+# $gitConfig = "$HOME\.gitconfig"
+# if (Test-Path $gitConfig) { Remove-Item $gitConfig -Force }
+# New-Item -ItemType SymbolicLink -Path $gitConfig -Target "$HOME\dev\dotfiles-windows\config_files\gitconfig"
+
 # Point pwsh profile to dotfiles-windows
-# ______________________________________
-# NB: must be run from pwsh 7
-# NB: first check if expression already in $PROFILE
-Set-Content -Path $PROFILE -Value '". $HOME\dev\dotfiles-windows\powershell_profile.ps1" | Invoke-Expression'
+$profileSource = ". $HOME\dev\dotfiles-windows\config_files\powershell-profile\profile.ps1"
+if (-not (Get-Content $PROFILE | Select-String $profileSource)) {
+    Add-Content -Path $PROFILE -Value $profileSource
+    Write-Host "Added sourcing of dotfiles profile to $PROFILE"
+} else {
+    Write-Host "Dotfiles profile already sourced in $PROFILE"
+}
+
+# Reload profile
+Write-Host "Reloading PowerShell profile..."
+. $PROFILE
